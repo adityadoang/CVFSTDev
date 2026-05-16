@@ -92,28 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
          }
       });
   }
-  function updatePricesUI() {
-    const now = new Date();
-    const earlyBirdStart = new Date('2026-05-18T00:00:00+07:00');
-    const earlyBirdEnd = new Date('2026-05-22T23:59:59+07:00');
-    const isEarlyBird = now >= earlyBirdStart && now <= earlyBirdEnd;
-    
-    const priceElements = document.querySelectorAll('.price-display');
-    priceElements.forEach(el => {
-      const basePrice = parseInt(el.getAttribute('data-base-price'), 10);
-      if (isNaN(basePrice)) return;
-      
-      const discount = isEarlyBird ? 15000 : 0;
-      const finalPrice = basePrice - discount;
-      
-      const formattedPrice = finalPrice.toLocaleString('id-ID', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      });
-      
-      el.textContent = `Rp. ${formattedPrice} / team`;
-    });
-  }
 
   const badgeEl = document.getElementById('phase-badge');
   const gridEl = document.getElementById('countdown-grid');
@@ -122,17 +100,12 @@ document.addEventListener('DOMContentLoaded', () => {
       setInterval(() => {
           updateTimerUI(badgeEl, gridEl);
           updateRegistrationButtons();
-          updatePricesUI();
       }, 1000);
       updateTimerUI(badgeEl, gridEl);
   } else {
-      setInterval(() => {
-          updateRegistrationButtons();
-          updatePricesUI();
-      }, 1000);
+      setInterval(updateRegistrationButtons, 1000);
   }
   updateRegistrationButtons();
-  updatePricesUI();
   
   // Theme Toggler
   const themeToggles = document.querySelectorAll('.theme-btn');
