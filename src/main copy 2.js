@@ -132,7 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
       updateThemeButton(newTheme);
-      window.dispatchEvent(new Event('themechanged'));
     });
   });
 
@@ -416,55 +415,36 @@ document.addEventListener('DOMContentLoaded', () => {
   const cv = document.getElementById('tri');
   if (cv) {
     const cx = cv.getContext('2d');
-    const darkPalette = [
+    const palette = [
       ['#0f2e12', '#0a1c0b'], ['#152e14', '#0c2010'], ['#1a4020', '#0e2812'],
       ['#0d1f0e', '#091508'], ['#1e4a22', '#132e15'], ['#112614', '#0a1b0c'],
       ['#163318', '#0f2511'], ['#081208', '#060e06'], ['#1c4420', '#122e14'],
       ['#244f27', '#163519'],
     ];
-    const lightPalette = [
-      ['#eaf3eb', '#e0ece2'], ['#daefdd', '#d1e6d4'], ['#cee7d1', '#c4dec7'],
-      ['#f0f7f1', '#e8efe9'], ['#c1e5c5', '#b6dbba'], ['#e6f4e8', '#dcf0de'],
-      ['#ddefdf', '#d4e8d6'], ['#f5faf6', '#ecf3ed'], ['#cae8cd', '#bedec1'],
-      ['#b5dfb8', '#abdbaf'],
-    ];
-
-    function getPalette() {
-      return document.documentElement.getAttribute('data-theme') === 'light' ? lightPalette : darkPalette;
-    }
-
-    function hash(r, c, s, palette) { return Math.abs((r * 73856093 ^ c * 19349663 ^ s * 83492791) % palette.length); }
-    
+    function hash(r, c, s) { return Math.abs((r * 73856093 ^ c * 19349663 ^ s * 83492791) % palette.length); }
     function drawTri() {
-      const palette = getPalette();
       const parent = cv.parentElement;
-      if (!parent) return;
       cv.width = parent.clientWidth; cv.height = parent.clientHeight;
       cx.clearRect(0, 0, cv.width, cv.height);
       const S = 60;
       const cols = Math.ceil(cv.width / S) + 1;
       const rows = Math.ceil(cv.height / S) + 1;
-      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
           const x = c * S, y = r * S;
-          const p = palette[hash(r, c, 0, palette)];
-          const p2 = palette[hash(r, c, 1, palette)];
+          const p = palette[hash(r, c, 0)];
+          const p2 = palette[hash(r, c, 1)];
           cx.fillStyle = p[0]; cx.beginPath(); cx.moveTo(x, y); cx.lineTo(x + S, y); cx.lineTo(x, y + S); cx.closePath(); cx.fill();
           cx.fillStyle = p[1]; cx.beginPath(); cx.moveTo(x + S, y); cx.lineTo(x + S, y + S); cx.lineTo(x, y + S); cx.closePath(); cx.fill();
-          cx.strokeStyle = isLight ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,.3)'; 
-          cx.lineWidth = .5; cx.beginPath(); cx.moveTo(x, y); cx.lineTo(x + S, y + S); cx.stroke();
+          cx.strokeStyle = 'rgba(0,0,0,.3)'; cx.lineWidth = .5; cx.beginPath(); cx.moveTo(x, y); cx.lineTo(x + S, y + S); cx.stroke();
         }
       }
-      cx.strokeStyle = isLight ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,.25)'; cx.lineWidth = .4;
+      cx.strokeStyle = 'rgba(0,0,0,.25)'; cx.lineWidth = .4;
       for (let r = 0; r <= rows; r++) { cx.beginPath(); cx.moveTo(0, r * S); cx.lineTo(cv.width, r * S); cx.stroke(); }
       for (let c = 0; c <= cols; c++) { cx.beginPath(); cx.moveTo(c * S, 0); cx.lineTo(c * S, cv.height); cx.stroke(); }
     }
-    
     drawTri();
     window.addEventListener('resize', drawTri);
-    window.addEventListener('themechanged', drawTri);
     let t = 0;
     (function shimmer() {
       t += .006;
@@ -488,15 +468,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     for (let i = 0; i < 12; i++) mkLeaf();
     setInterval(mkLeaf, 1900);
-  }
-
-  // Parallax on about logo
-  const aboutLogo = document.querySelector('.hl-container .hl');
-  if (aboutLogo) {
-    document.addEventListener('mousemove', e => {
-      const dx = (e.clientX / window.innerWidth - 0.5) * 20;
-      const dy = (e.clientY / window.innerHeight - 0.5) * 20;
-      aboutLogo.style.transform = `translate(${dx}px, ${dy}px)`;
-    });
   }
 });
