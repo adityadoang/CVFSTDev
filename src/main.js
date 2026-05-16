@@ -490,13 +490,15 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(mkLeaf, 1900);
   }
 
-  // Parallax on about logo
-  const aboutLogo = document.querySelector('.hl-container .hl');
-  if (aboutLogo) {
+  // Parallax on about logos
+  const hlLogos = document.querySelectorAll('.hl-container .hl');
+  if (hlLogos.length > 0) {
     document.addEventListener('mousemove', e => {
       const dx = (e.clientX / window.innerWidth - 0.5) * 20;
       const dy = (e.clientY / window.innerHeight - 0.5) * 20;
-      aboutLogo.style.transform = `translate(${dx}px, ${dy}px)`;
+      hlLogos.forEach(logo => {
+        logo.style.transform = `translate(${dx}px, ${dy}px)`;
+      });
     });
   }
 });

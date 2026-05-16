@@ -63,13 +63,38 @@
             <div id="fade-t"></div>
             <div id="fade-b"></div>
             <div id="ptcl"></div>
-            <div class="container hero-content animate-fade-up">
-                <h1>CIVIL ENGINEERING<br />FESTIVAL</h1>
-                <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 2.5rem;">
-                    <p style="font-weight: 600; color: var(--color-accent); font-size: 1.25rem; margin-bottom: 0;">"Transforming the Future through Sustainable Green Infrastructure Innovation"</p>
-                    <p style="margin-bottom: 0;">Join CIVFEST 2026 to explore innovation, expand connections, and become part of the future generation of sustainable infrastructure leaders.</p>
+            <div class="container hero-content animate-fade-up" style="display: flex; flex-direction: column; align-items: center; text-align: center; position: relative;">
+                
+                <!-- Glowing Breathing Logo -->
+                <div class="hl-container" style="display: flex; justify-content: center; align-items: center; margin-bottom: 1.5rem;">
+                    <div class="hl" style="position: relative; width: 180px; height: 180px;">
+                        <div class="ring2"></div>
+                        <div class="ring1"></div>
+                        <img src="/logo.png" alt="CivFest Logo" class="breathe-logo" style="width: 100%; height: 100%; object-fit: contain; position: relative; z-index: 2;" />
+                    </div>
                 </div>
-                <div class="hero-buttons animate-fade-up delay-200">
+
+                <!-- Event Tag -->
+                <div style="font-size: clamp(0.55rem, 1.8vw, 0.75rem); font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 0.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">
+                    Civil Engineering Festival Politeknik Negeri Jakarta
+                </div>
+
+                <!-- Exact Match Title -->
+                <h1 style="font-family: var(--font-heading); font-weight: 900; font-size: clamp(3.5rem, 11vw, 9rem); line-height: 0.87; letter-spacing: -0.015em; text-transform: uppercase; color: var(--color-text-main); margin-bottom: 0;">
+                    CIVFEST
+                    <span style="display: block; color: var(--color-accent); font-size: 0.65em; line-height: 1; letter-spacing: -0.02em;">11<sup style="font-size: 0.42em; vertical-align: super; letter-spacing: 0;">TH</sup></span>
+                </h1>
+
+                <!-- Gradient Divider -->
+                <div style="width: 200px; height: 2px; margin: 2rem auto; background: linear-gradient(90deg, transparent, var(--color-accent) 50%, transparent); opacity: 0.65;"></div>
+
+                <!-- Exact Tagline -->
+                <p style="font-size: clamp(0.85rem, 1.5vw, 1.1rem); font-weight: 300; line-height: 1.8; color: var(--color-text-muted); max-width: 500px; margin: 0 auto 3rem auto;">
+                    <strong style="color: var(--color-text-main); font-weight: 600;">Transforming the Future through Sustainable Green Infrastructure Innovation</strong>
+                </p>
+
+                <!-- Action Buttons -->
+                <div class="hero-buttons animate-fade-up delay-200" style="display: flex; gap: 1.5rem; justify-content: center; width: 100%; flex-wrap: wrap;">
                     <a class="btn-primary" href="/events.html">Explore Events</a>
                     <a class="btn-secondary" href="#what-is-civfest">Learn More</a>
                 </div>
