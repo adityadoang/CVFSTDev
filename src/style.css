@@ -1263,7 +1263,44 @@ h1, h2, h3, h4 {
 [data-theme="light"] .hl-container .ring1 { border-color: rgba(108, 160, 29, .25); }
 [data-theme="light"] .hl-container .ring2 { border-color: rgba(108, 160, 29, .15); }
 
+
 @keyframes rp {
   0%, 100% { transform: scale(1); opacity: 1; }
   50% { transform: scale(1.1); opacity: .45; }
+}
+
+/* Mobile: Reduce/disable jarring animations */
+@media (max-width: 768px) {
+  /* Stop ring pulse on mobile - causes visual jitter */
+  .hl-container .ring1,
+  .hl-container .ring2 {
+    animation: none;
+  }
+
+  /* Slow down breathe animation on mobile */
+  .hl-container .breathe-logo {
+    animation-duration: 8s;
+  }
+
+  /* Disable hover translate on comp logos on touch */
+  .glass-card:hover .comp-item-logo-placeholder {
+    transform: none;
+  }
+
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .hl-container .ring1,
+  .hl-container .ring2 {
+    animation: none;
+  }
 }

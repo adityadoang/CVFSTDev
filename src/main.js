@@ -492,16 +492,21 @@ document.addEventListener('DOMContentLoaded', () => {
     drawTri();
     window.addEventListener('resize', drawTri);
     window.addEventListener('themechanged', drawTri);
-    let t = 0;
-    (function shimmer() {
-      t += .006;
-      cv.style.opacity = (0.88 + Math.sin(t) * 0.05).toString();
-      requestAnimationFrame(shimmer);
-    })();
+    // Only run shimmer on non-mobile to prevent flickering
+    const isMobile = () => window.innerWidth <= 768 || ('ontouchstart' in window);
+    if (!isMobile()) {
+      let t = 0;
+      (function shimmer() {
+        t += .006;
+        cv.style.opacity = (0.88 + Math.sin(t) * 0.05).toString();
+        requestAnimationFrame(shimmer);
+      })();
+    }
   }
 
   const pc = document.getElementById('ptcl');
   if (pc) {
+    const isMobileDevice = window.innerWidth <= 768 || ('ontouchstart' in window);
     const lc = ['#2d7a1f80', '#4caf2a60', '#86be2750', '#11481c70'];
     function mkLeaf() {
       const el = document.createElement('div'); el.className = 'lp';
@@ -513,13 +518,17 @@ document.addEventListener('DOMContentLoaded', () => {
       pc.appendChild(el);
       setTimeout(() => el.remove(), (dur + dly) * 1000);
     }
-    for (let i = 0; i < 12; i++) mkLeaf();
-    setInterval(mkLeaf, 1900);
+    // Fewer particles on mobile to reduce jank
+    const initialCount = isMobileDevice ? 4 : 12;
+    const intervalMs = isMobileDevice ? 4000 : 1900;
+    for (let i = 0; i < initialCount; i++) mkLeaf();
+    setInterval(mkLeaf, intervalMs);
   }
 
-  // Parallax on about logos
+  // Parallax on about logos — desktop only (no mouse on touch devices)
   const hlLogos = document.querySelectorAll('.hl-container .hl');
-  if (hlLogos.length > 0) {
+  const isTouch = ('ontouchstart' in window) || window.innerWidth <= 768;
+  if (hlLogos.length > 0 && !isTouch) {
     document.addEventListener('mousemove', e => {
       const dx = (e.clientX / window.innerWidth - 0.5) * 20;
       const dy = (e.clientY / window.innerHeight - 0.5) * 20;
