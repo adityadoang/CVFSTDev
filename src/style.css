@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;900&display=swap');
 
 :root {
-  --bg-overlay: var(--bg-overlay);
-  --bg-overlay-hover: var(--bg-overlay-hover);
-  --border-light: var(--border-light);
-  --border-lighter: var(--border-lighter);
+  --bg-overlay: rgba(255, 255, 255, 0.05);
+  --bg-overlay-hover: rgba(255, 255, 255, 0.1);
+  --border-light: rgba(255, 255, 255, 0.15);
+  --border-lighter: rgba(255, 255, 255, 0.4);
   --color-primary: #39842a;    
   --color-primary-dark: #11481c; 
   --color-accent: #86be27;     

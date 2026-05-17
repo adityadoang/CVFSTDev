@@ -14,6 +14,27 @@
         body:not(.js-loaded) {
             visibility: hidden;
         }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes popIn {
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes growW {
+            to {
+                width: 200px;
+                opacity: .65;
+            }
+        }
     </style>
 </head>
 
@@ -35,8 +56,8 @@
                 </div>
             </a>
             <nav class="nav-links">
-                <a class="nav-item" href="/index.html">Home</a>
-                <a class="nav-item active" href="/events.html">Events</a>
+                <a class="nav-item active" href="/index.html">Home</a>
+                <a class="nav-item" href="/events.html">Events</a>
                 <a class="nav-item" href="/past-events.html">Past Events</a>
                 <button aria-label="Toggle Theme" class="theme-btn"><svg fill="none" height="20" stroke="currentColor"
                         stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20">
@@ -63,38 +84,50 @@
             <div id="fade-t"></div>
             <div id="fade-b"></div>
             <div id="ptcl"></div>
-            <div class="container hero-content animate-fade-up" style="display: flex; flex-direction: column; align-items: center; text-align: center; position: relative;">
-                
+            <div class="container hero-content animate-fade-up"
+                style="display: flex; flex-direction: column; align-items: center; text-align: center; position: relative;">
+
                 <!-- Glowing Breathing Logo -->
-                <div class="hl-container" style="display: flex; justify-content: center; align-items: center; margin-bottom: 1.5rem;">
+                <div class="hl-container"
+                    style="display: flex; justify-content: center; align-items: center; margin-bottom: 1.5rem;">
                     <div class="hl" style="position: relative; width: 180px; height: 180px;">
                         <div class="ring2"></div>
                         <div class="ring1"></div>
-                        <img src="/logo.png" alt="CivFest Logo" class="breathe-logo" style="width: 100%; height: 100%; object-fit: contain; position: relative; z-index: 2;" />
+                        <img src="/logo.png" alt="CivFest Logo" class="breathe-logo"
+                            style="width: 100%; height: 100%; object-fit: contain; position: relative; z-index: 2;" />
                     </div>
                 </div>
 
                 <!-- Event Tag -->
-                <div style="font-size: clamp(0.55rem, 1.8vw, 0.75rem); font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 0.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">
+                <div
+                    style="font-size: clamp(0.5rem, 2vw, 0.6rem); font-weight: 700; letter-spacing: clamp(0.15em, 1vw, 0.35em); line-height: 1.6; text-transform: uppercase; color: #4caf2a; margin-bottom: 0.9rem; padding: 0 1rem; opacity: 0; transform: translateY(10px); animation: slideIn .6s .9s forwards;">
                     Civil Engineering Festival Politeknik Negeri Jakarta
                 </div>
 
                 <!-- Exact Match Title -->
-                <h1 style="font-family: var(--font-heading); font-weight: 900; font-size: clamp(3.5rem, 11vw, 9rem); line-height: 0.87; letter-spacing: -0.015em; text-transform: uppercase; color: var(--color-text-main); margin-bottom: 0;">
+                <h1
+                    style="font-family: var(--font-heading); font-weight: 900; font-size: clamp(3rem, 10.5vw, 8.8rem); line-height: 0.87; letter-spacing: -0.015em; text-transform: uppercase; color: var(--color-text-main); margin-bottom: 0; opacity: 0; transform: translateY(18px); animation: slideIn .85s 1.05s forwards;">
                     CIVFEST
-                    <span style="display: block; color: var(--color-accent); font-size: 0.65em; line-height: 1; letter-spacing: -0.02em;">11<sup style="font-size: 0.42em; vertical-align: super; letter-spacing: 0;">TH</sup></span>
+                    <span
+                        style="display: block; color: #4caf2a; font-size: 0.65em; line-height: 1; letter-spacing: -0.02em;">11<sup
+                            style="font-size: 0.42em; vertical-align: super; letter-spacing: 0;">TH</sup></span>
                 </h1>
 
                 <!-- Gradient Divider -->
-                <div style="width: 200px; height: 2px; margin: 2rem auto; background: linear-gradient(90deg, transparent, var(--color-accent) 50%, transparent); opacity: 0.65;"></div>
+                <div
+                    style="width: 0; height: 2px; margin: 1.5rem auto; background: linear-gradient(90deg, transparent, #4caf2a 50%, transparent); opacity: 0; animation: growW .8s 1.35s forwards;">
+                </div>
 
                 <!-- Exact Tagline -->
-                <p style="font-size: clamp(0.85rem, 1.5vw, 1.1rem); font-weight: 300; line-height: 1.8; color: var(--color-text-muted); max-width: 500px; margin: 0 auto 3rem auto;">
-                    <strong style="color: var(--color-text-main); font-weight: 600;">Transforming the Future through Sustainable Green Infrastructure Innovation</strong>
+                <p
+                    style="font-size: clamp(0.65rem, 1.3vw, 0.8rem); font-weight: 300; line-height: 1.8; color: rgba(255,255,255,0.35); letter-spacing: 0.04em; max-width: 400px; margin: 0 auto 3rem auto; opacity: 0; transform: translateY(8px); animation: slideIn .65s 1.7s forwards;">
+                    <strong style="color: rgba(134,190,39,0.8); font-weight: 600;">Transforming the Future through
+                        Sustainable Green Infrastructure Innovation</strong>
                 </p>
 
                 <!-- Action Buttons -->
-                <div class="hero-buttons animate-fade-up delay-200" style="display: flex; gap: 1.5rem; justify-content: center; width: 100%; flex-wrap: wrap;">
+                <div class="hero-buttons animate-fade-up delay-200"
+                    style="display: flex; gap: 1.5rem; justify-content: center; width: 100%; flex-wrap: wrap;">
                     <a class="btn-primary" href="/events.html">Explore Events</a>
                     <a class="btn-secondary" href="#what-is-civfest">Learn More</a>
                 </div>
@@ -109,10 +142,12 @@
                         style="display: flex; flex-wrap: wrap; align-items: center; gap: 4rem; justify-content: center;">
                         <div class="about-logo animate-fade-up delay-100 hl-container"
                             style="flex: 1 1 400px; max-width: 500px; display: flex; justify-content: center; align-items: center;">
-                            <div class="hl" style="position: relative; width: 100%; max-width: 400px; aspect-ratio: 1/1;">
+                            <div class="hl"
+                                style="position: relative; width: 100%; max-width: 400px; aspect-ratio: 1/1;">
                                 <div class="ring2"></div>
                                 <div class="ring1"></div>
-                                <img alt="Civfest Logo" src="/logo.png" class="breathe-logo" style="width: 100%; height: 100%; object-fit: contain; position: relative; z-index: 2;" />
+                                <img alt="Civfest Logo" src="/logo.png" class="breathe-logo"
+                                    style="width: 100%; height: 100%; object-fit: contain; position: relative; z-index: 2;" />
                             </div>
                         </div>
                         <div class="about-text animate-fade-up delay-200" style="flex: 2 1 500px; text-align: left;">
@@ -226,8 +261,8 @@
                         <a class="glass-card animate-fade-up delay-200" data-open-comp="nbmdc"
                             data-open-modal="modal-competitions" href="#">
                             <div class="comp-logo-box">
-                                <div class="comp-item-logo-placeholder"><img alt="NBMDC Logo"
-                                        src="/lombatra/NBMDC.png" style="transform: scale(1.5);" /></div>
+                                <div class="comp-item-logo-placeholder"><img alt="NBMDC Logo" src="/lombatra/NBMDC.png"
+                                        style="transform: scale(1.5);" /></div>
                             </div>
                             <h3>NBMDC</h3>
                             <p>National Building Mockup Design Competition</p>
@@ -305,8 +340,8 @@
                                 <div class="comp-item-arrow">→</div>
                             </div>
                             <div class="comp-item-card" data-comp="nbmdc">
-                                <div class="comp-item-logo-placeholder"><img alt="NBMDC Logo"
-                                        src="/lombatra/NBMDC.png" style="transform: scale(1.5);" /></div>
+                                <div class="comp-item-logo-placeholder"><img alt="NBMDC Logo" src="/lombatra/NBMDC.png"
+                                        style="transform: scale(1.5);" /></div>
                                 <div class="comp-item-text">
                                     <h4>NBMDC</h4>
                                     <span>National Building Mockup Design</span>
@@ -326,10 +361,15 @@
                                 <div class="comp-logo"><img alt="NBC Logo" src="/lombatra/NBC.png" /></div>
                                 <h3>National BIM Competition</h3>
                             </div>
-                            <p style="margin-bottom: 0.75rem; border-left: 2px solid var(--color-border); padding-left: 1rem; margin-bottom: 0.5rem;">
-                                The <strong>National BIM Competition (NBC)</strong> is a national-scale competition open to active undergraduate students in Civil Engineering programs across Indonesia. It serves as a platform for participants to channel their creativity and innovation in designing building structures using Building Information Modeling (BIM) technology.
+                            <p
+                                style="margin-bottom: 0.75rem; border-left: 2px solid var(--color-border); padding-left: 1rem; margin-bottom: 0.5rem;">
+                                The <strong>National BIM Competition (NBC)</strong> is a national-scale competition open
+                                to active undergraduate students in Civil Engineering programs across Indonesia. It
+                                serves as a platform for participants to channel their creativity and innovation in
+                                designing building structures using Building Information Modeling (BIM) technology.
                             </p>
-                            <p style="margin-bottom: 2rem; border-left: 2px solid var(--color-border); padding-left: 1rem; padding-top: 0.5rem;">
+                            <p
+                                style="margin-bottom: 2rem; border-left: 2px solid var(--color-border); padding-left: 1rem; padding-top: 0.5rem;">
                                 Theme: <em>"Green Building Design through BIM for a Sustainable Future"</em>
                             </p>
                             <div class="comp-stats">
@@ -339,7 +379,8 @@
                                 </div>
                                 <div class="stat-box">
                                     <span class="stat-label">Registration Fee</span>
-                                    <span class="stat-value price-display" data-base-price="200000">Rp. 200.000,00 / team</span>
+                                    <span class="stat-value price-display" data-base-price="200000">Rp. 200.000,00 /
+                                        team</span>
                                 </div>
                             </div>
                             <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
@@ -382,11 +423,18 @@
                                 <div class="comp-logo"><img alt="NBDC Logo" src="/lombatra/NBDC.png" /></div>
                                 <h3>National Bridge Design Competition</h3>
                             </div>
-                            <p style="margin-bottom: 0.5rem; border-left: 2px solid var(--color-border); padding-left: 1rem;">
-                                The <strong>National Bridge Design Competition (NBDC)</strong> is a competition that serves as a platform for Civil Engineering students to develop their creativity, innovation, and inspiration in designing bridge structures. This year, the competition is integrated with the Green Building concept, encouraging participants to incorporate sustainable principles into their bridge design solutions.
+                            <p
+                                style="margin-bottom: 0.5rem; border-left: 2px solid var(--color-border); padding-left: 1rem;">
+                                The <strong>National Bridge Design Competition (NBDC)</strong> is a competition that
+                                serves as a platform for Civil Engineering students to develop their creativity,
+                                innovation, and inspiration in designing bridge structures. This year, the competition
+                                is integrated with the Green Building concept, encouraging participants to incorporate
+                                sustainable principles into their bridge design solutions.
                             </p>
-                            <p style="margin-bottom: 2rem; border-left: 2px solid var(--color-border); padding-left: 1rem; padding-top: 0.5rem;">
-                                Theme: <em>"“Transforming the Future Through Sustainable Green Infrastructure Innovation”"</em>
+                            <p
+                                style="margin-bottom: 2rem; border-left: 2px solid var(--color-border); padding-left: 1rem; padding-top: 0.5rem;">
+                                Theme: <em>"“Transforming the Future Through Sustainable Green Infrastructure
+                                    Innovation”"</em>
                             </p>
                             <div class="comp-stats">
                                 <div class="stat-box">
@@ -395,7 +443,8 @@
                                 </div>
                                 <div class="stat-box">
                                     <span class="stat-label">Registration Fee</span>
-                                    <span class="stat-value price-display" data-base-price="200000">Rp. 200.000,00 / team</span>
+                                    <span class="stat-value price-display" data-base-price="200000">Rp. 200.000,00 /
+                                        team</span>
                                 </div>
                             </div>
                             <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
@@ -438,11 +487,18 @@
                                 <div class="comp-logo"><img alt="NPTC Logo" src="/lombatra/NPTC.png" /></div>
                                 <h3>National Project Tender Competition</h3>
                             </div>
-                            <p style="margin-bottom: 0.5rem; border-left: 2px solid var(--color-border); padding-left: 1rem;">
-                                The <strong>National Project Tender Competition (NPTC)</strong> is a national-scale competition open to active undergraduate students in Civil Engineering programs across Indonesia. The competition challenges participants to demonstrate their creativity and innovation in developing efficient construction project tender strategies, with a focus on cost-effectiveness, time management, and quality assurance.
+                            <p
+                                style="margin-bottom: 0.5rem; border-left: 2px solid var(--color-border); padding-left: 1rem;">
+                                The <strong>National Project Tender Competition (NPTC)</strong> is a national-scale
+                                competition open to active undergraduate students in Civil Engineering programs across
+                                Indonesia. The competition challenges participants to demonstrate their creativity and
+                                innovation in developing efficient construction project tender strategies, with a focus
+                                on cost-effectiveness, time management, and quality assurance.
                             </p>
-                            <p style="margin-bottom: 2rem; border-left: 2px solid var(--color-border); padding-left: 1rem; padding-top: 0.5rem;">
-                                Theme: <em>"Smart Construction Management to Create Efficient and Green Infrastructure"</em>
+                            <p
+                                style="margin-bottom: 2rem; border-left: 2px solid var(--color-border); padding-left: 1rem; padding-top: 0.5rem;">
+                                Theme: <em>"Smart Construction Management to Create Efficient and Green
+                                    Infrastructure"</em>
                             </p>
                             <div class="comp-stats">
                                 <div class="stat-box">
@@ -451,7 +507,8 @@
                                 </div>
                                 <div class="stat-box">
                                     <span class="stat-label">Registration Fee</span>
-                                    <span class="stat-value price-display" data-base-price="200000">Rp. 200.000,00 / team</span>
+                                    <span class="stat-value price-display" data-base-price="200000">Rp. 200.000,00 /
+                                        team</span>
                                 </div>
                             </div>
                             <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
@@ -494,10 +551,16 @@
                                 <div class="comp-logo"><img alt="NCC Logo" src="/lombatra/NCC.png" /></div>
                                 <h3>National Concrete Competition</h3>
                             </div>
-                            <p style="margin-bottom: 0.5rem; border-left: 2px solid var(--color-border); padding-left: 1rem;">
-                                The <strong>National Concrete Competition (NCC)</strong> is a competition that provides Civil Engineering students with a platform to develop their creativity, innovation, and efficiency in designing high-strength concrete mixtures. Participants are challenged to enhance the mechanical properties of concrete by incorporating recycled materials into the mix design.
+                            <p
+                                style="margin-bottom: 0.5rem; border-left: 2px solid var(--color-border); padding-left: 1rem;">
+                                The <strong>National Concrete Competition (NCC)</strong> is a competition that provides
+                                Civil Engineering students with a platform to develop their creativity, innovation, and
+                                efficiency in designing high-strength concrete mixtures. Participants are challenged to
+                                enhance the mechanical properties of concrete by incorporating recycled materials into
+                                the mix design.
                             </p>
-                            <p style="margin-bottom: 2rem; border-left: 2px solid var(--color-border); padding-left: 1rem; padding-top: 0.5rem;">
+                            <p
+                                style="margin-bottom: 2rem; border-left: 2px solid var(--color-border); padding-left: 1rem; padding-top: 0.5rem;">
                                 Theme: <em>"Exploration of Recycled Alternative Materials as Concrete Components"</em>
                             </p>
                             <div class="comp-stats">
@@ -507,7 +570,8 @@
                                 </div>
                                 <div class="stat-box">
                                     <span class="stat-label">Registration Fee</span>
-                                    <span class="stat-value price-display" data-base-price="200000">Rp. 200.000,00 / team</span>
+                                    <span class="stat-value price-display" data-base-price="200000">Rp. 200.000,00 /
+                                        team</span>
                                 </div>
                             </div>
                             <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
@@ -547,14 +611,15 @@
                         <!-- NBMDC -->
                         <div class="comp-detail-content" id="detail-nbmdc" style="display: none;">
                             <div class="comp-detail-header">
-                                <div class="comp-logo"><img alt="NBMDC Logo" src="/lombatra/NBMDC.png" style="transform: scale(1.5);" /></div>
+                                <div class="comp-logo"><img alt="NBMDC Logo" src="/lombatra/NBMDC.png"
+                                        style="transform: scale(1.5);" /></div>
                                 <h3>National Building Mockup Design</h3>
                             </div>
                             <p
                                 style="margin-bottom: 2rem; border-left: 2px solid var(--color-border); padding-left: 1rem;">
                                 NBMDC Civil Engineering Festival 2026 is a competition that will bring the theme
-                                <em>“Green Architectural Design to Achieve a Comfortable and Safe Residential
-                                    Building”</em>.</p>
+                                <em>“Green Building Design for Comfortable Future”</em>.
+                            </p>
                             <div class="comp-stats">
                                 <div class="stat-box">
                                     <span class="stat-label">Total Prize</span>
@@ -562,7 +627,8 @@
                                 </div>
                                 <div class="stat-box">
                                     <span class="stat-label">Registration Fee</span>
-                                    <span class="stat-value price-display" data-base-price="150000">Rp. 150.000,00 / team</span>
+                                    <span class="stat-value price-display" data-base-price="150000">Rp. 150.000,00 /
+                                        team</span>
                                 </div>
                             </div>
                             <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
